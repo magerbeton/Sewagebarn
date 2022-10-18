@@ -3,6 +3,8 @@
 
 #include "ItemDatabase.h"
 
+#include "Kismet/KismetMathLibrary.h"
+
 bool UItemDatabase::FindItemById(int ID, int& index)
 {
 	for(int i = 0; i<Items.Num(); i++)
@@ -15,4 +17,14 @@ bool UItemDatabase::FindItemById(int ID, int& index)
 	}
 	index = -1;
 	return false;
+}
+
+FItemStruct UItemDatabase::GetRandomItem()
+{
+	const int index = UKismetMathLibrary::RandomIntegerInRange(0,Items.Num());
+	if(Items.IsValidIndex(index))
+	{
+		return Items[index];
+	}
+	return FItemStruct();
 }

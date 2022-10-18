@@ -14,7 +14,7 @@ UInventoryComponent::UInventoryComponent()
 
 	// Inventory slots are set to a constant value
 	ItemSlotCount = 10; // for a minecraft HotBar similar approach
-	Inventory.Init(FItemReducedStruct(),ItemSlotCount); // Fill inventory with Empty slots
+	Inventory.Init(FReducedItemStruct(),ItemSlotCount); // Fill inventory with Empty slots
 
 	// Get the ItemList of all items
 	const ConstructorHelpers::FObjectFinder<UItemDatabase>ItemDatabase_Obj(TEXT("ItemDatabase'/Game/Data/AllItems.AllItems'"));
@@ -44,7 +44,7 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
-bool UInventoryComponent::PickupItem(FItemReducedStruct Item)
+bool UInventoryComponent::PickupItem(FReducedItemStruct Item)
 {
 	int ItemInventoryIndex;
 	// Pickup item to inventory when already existing
@@ -64,7 +64,7 @@ bool UInventoryComponent::PickupItem(FItemReducedStruct Item)
 	return false;
 }
 
-bool UInventoryComponent::FindItemInInventory(FItemReducedStruct ItemToFind, int& index)
+bool UInventoryComponent::FindItemInInventory(FReducedItemStruct ItemToFind, int& index)
 {
 	for(int i = 0; i<ItemSlotCount; i++)
 	{

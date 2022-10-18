@@ -22,5 +22,8 @@ public:
 
 	UFUNCTION()
 	bool FindItemById(int ID, int& index);
+
+	UFUNCTION()
+	FItemStruct GetRandomItem();
 	
 };

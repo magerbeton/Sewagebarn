@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ItemDatabase.h"
+#include "ReducedItemStruct.h"
 #include "ItemStruct.h"
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
@@ -30,16 +31,16 @@ public:
 	UItemDatabase* ItemDatabase;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TArray<FItemReducedStruct> Inventory;
+	TArray<FReducedItemStruct> Inventory;
 
 	UPROPERTY()
 	int ItemSlotCount;
 	
 	UFUNCTION()
-	bool PickupItem(FItemReducedStruct Item);
+	bool PickupItem(FReducedItemStruct Item);
 
 	UFUNCTION()
-	bool FindItemInInventory(FItemReducedStruct ItemToFind, int& index);
+	bool FindItemInInventory(FReducedItemStruct ItemToFind, int& index);
 
 	UFUNCTION()
 	bool FindEmptySlot(int& index);

@@ -3,27 +3,36 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ItemStruct.h"
 #include "GameFramework/Actor.h"
-#include "Item_Base.generated.h"
+#include "ItemSpawner.generated.h"
+
+class UItemDatabase;
 
 UCLASS()
-class SEWAGEBARN_API AItem_Base : public AActor
+class SEWAGEBARN_API AItemSpawner : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
-	AItem_Base();
+	AItemSpawner();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY()
-	FItemReducedStruct Item;
+	UItemDatabase* ItemLootTable;
+
+	UPROPERTY()
+	FTimerHandle ItemSpawnTimer;
+
+	UFUNCTION()
+	void SpawnItemFromLootTable();
 };
+
+

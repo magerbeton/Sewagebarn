@@ -35,24 +35,9 @@ struct FItemStruct
 		ItemDescription = "This is a placeholder item";
 		MaxStackSize = 0;
 	}
+
+	
 };
 
-USTRUCT(BlueprintType)
-struct FItemReducedStruct
-{
-	GENERATED_BODY()
 
-	UPROPERTY()
-	int ItemID;
 
-	UPROPERTY()
-	int Amount;
-
-	FItemReducedStruct()
-	{
-		ItemID = 0;
-		Amount = 0;
-	}
-
-	FORCEINLINE bool GetItemData(UItemDatabase* ItemDatabase, FItemStruct& ItemToUpdate);
-};
